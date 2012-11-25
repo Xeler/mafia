@@ -41,23 +41,10 @@
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			window.onbeforeunload = function() {
-				
-				//alert("sending request: leave; id:" + USER_ID);
-				/*$.ajax({
-					type: "POST",
-					url: "php.php",
-					data: { action: "leave", id: USER_ID }
-				}).done(function(msg) {
-					eval(msg);
-				});*/
+			//Funktionen bliver kaldt gennem php.php nar man er kommet ind i en lobby.
+			//Den sender en besked til serveren en gang hvert 10. sek, og hvis
+			//serveren ikke har faet en besked 
+			function sendCheck() {
 				
 				
 			}

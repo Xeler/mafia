@@ -10,8 +10,8 @@
 	
 	
 	
-	mysql_connect("localhost", "root", "");
-	mysql_select_db("mafia");
+	mysql_connect("autistklassen.dk", "web83-general", "General-Pass");
+	mysql_select_db("web83-general");
 	
 	
 	
@@ -36,6 +36,7 @@
 				mysql_query("INSERT INTO lobby VALUES ('$lobby_id', '$id', '$player_nr', '$is_admin')");
 				
 				echo "var USER_ID='" . $id . "';";
+				
 				die("alert('lobby created!');");
 				
 				
