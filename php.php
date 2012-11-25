@@ -52,7 +52,7 @@
 				$player_nr = mysql_query("SELECT MAX(PLAYER_NR) FROM lobby");
 				$player_nr = mysql_result($player_nr, 0)+1;
 				
-				mysql_query("INSERT INTO lobby VALUES ('$lobby_id', '$id', '$player_nr', '0')");
+				mysql_query("INSERT INTO lobby VALUES ('$lobby_id', '$id', '$player_nr', '$0')");
 				
 				echo "var USER_ID='" . $id . "';";
 				
