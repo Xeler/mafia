@@ -29,11 +29,11 @@
 			
 			
 			function joinLobby() {
-				var room_id = document.getElementById("lobby_id").value
+				var lobby_id = document.getElementById("lobby_id").value;
 				$.ajax({
 					type: "POST",
 					url: "php.php",
-					data: { action: "joinLobby", room: room_id }
+					data: { action: "joinLobby", lobby_id: lobby_id }
 				}).done(function(msg) {
 					eval(msg);
 				});

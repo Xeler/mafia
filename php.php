@@ -31,9 +31,7 @@
 				$player_nr = mysql_query("SELECT MAX(PLAYER_NR) FROM lobby");
 				$player_nr = mysql_result($player_nr, 0)+1;
 				
-				$is_admin = 1;
-				
-				mysql_query("INSERT INTO lobby VALUES ('$lobby_id', '$id', '$player_nr', '$is_admin')");
+				mysql_query("INSERT INTO lobby VALUES ('$lobby_id', '$id', '$player_nr', '1')");
 				
 				echo "var USER_ID='" . $id . "';";
 				
@@ -45,9 +43,18 @@
 			
 			
 			case "joinLobby":
-				$room = mysql_real_escape_string($_POST["room"]);
+				$lobby_id = mysql_real_escape_string($_POST["lobby_id"]);
 				
+				//Lav et ID til spilleren som joiner rummet
+				$id = md5(microtime());
 				
+				//Find NR til spilleren
+				$player_nr = mysql_query("SELECT MAX(PLAYER_NR) FROM lobby");
+				$player_nr = mysql_result($player_nr, 0)+1;
+				
+				mysql_query("INSERT INTO lobby VALUES ('$lobby_id', '$id', '$player_nr', '$0')");
+				
+				echo "var USER_ID='" . $id . "';";
 				
 				
 				
