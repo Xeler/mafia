@@ -17,6 +17,40 @@
 		</script>
 		<script type="text/javascript">
 			
+			var USER_ID;
+			var STATUS;
+			var LAST_USER_UPDATE_TIME;
+			
+			
+			
+			window.onload = looping;
+			function looping() {
+				switch(STATUS) {
+					case "IN_LOBBY":
+						sendRefresh();
+						getPlayerList();
+					break;
+					
+					
+					
+					
+					default:
+						
+					break;
+				}
+				
+				
+				setTimeout("looping()", 1000);
+				return;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
 			function createLobby() {
 				$.ajax({
 					type: "POST",
@@ -44,11 +78,30 @@
 			//Funktionen bliver kaldt gennem php.php nar man er kommet ind i en lobby.
 			//Den sender en besked til serveren en gang hvert 10. sek, og hvis
 			//serveren ikke har faet en besked 
-			function sendCheck() {
-				
+			function sendRefresh() {
+				$.ajax({
+					type: "POST",
+					url: "php.php",
+					data: { action: "sendRefresh", id: USER_ID }
+				}).done(function(msg) {
+					eval(msg);
+				});
 				
 			}
 			
+			function getPlayerList() {
+				$.ajax({
+					type: "POST",
+					url: "php.php",
+					data: { action: "getPlayers", id: USER_ID, last_update: LAST_USER_UPDATE_TIME }
+				}).done(function(msg) {
+				
+				//	document.getElementById('playerlist').innerHTML = msg;
+					eval(msg);
+				});
+				
+				
+			}
 			
 			
 			
@@ -60,7 +113,10 @@
 		<div id="content">
 			<input type="button" value="Create New Lobby!" onclick="createLobby()" /><br />
 			Join lobby ID: <input type="text" size="2" id="lobby_id" /><input type="button" value="OK!" onclick="joinLobby()" />
-			
+			<div id='playerlist'>
+				
+				
+			</div>
 			
 		</div>
 	</body>
