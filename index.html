@@ -50,17 +50,7 @@
 			
 			
 			
-			function doAjax(var _action) {
-				$.ajax({
-					type: "POST",
-					url: "php.php",
-					data: { action: _action}
-				}).done(function(msg) {
-					eval(msg);
-				});
-			}
-			
-			/*function createLobby() {
+			function createLobby() {
 				$.ajax({
 					type: "POST",
 					url: "php.php",
@@ -110,7 +100,7 @@
 				});
 				
 				
-			}*/
+			}
 			
 			
 			
